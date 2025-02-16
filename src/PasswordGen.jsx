@@ -4,17 +4,12 @@ import { LC, NC, SC, UC } from "./data/PassChar";
 function PasswordGen() {
   const [password, setPassword] = useState("");
   const [passwordLength, setPasswordLength] = useState(8);
-  //   const [checkbox, setCheckbox] = useState({
-  //     uppercase: false,
-  //     lowercase: false,
-  //     number: false,
-  //     symbols: false,
-  //   });
   const [uppercase, setUppercase] = useState(false);
   const [lowercase, setLowercase] = useState(false);
   const [number, setNumber] = useState(false);
   const [symbols, setSymbols] = useState(false);
 
+  // Generate password functions
   let generatePassword = () => {
     let characters = "";
     if (uppercase) characters += UC;
@@ -40,17 +35,20 @@ function PasswordGen() {
   };
 
   return (
-    <div className="bg-green-500 w-96 text-center mx-auto mt-38 text-white rounded-xl hover:shadow-lg shadow-gray-500 p-3">
-      <h1 className="font-medium text-2xl p-3 border-b border-white w-full h-fit">
+    <div className="bg-[url(assets/bg.gif)] bg-no-repeat bg-center bg-cover mt-36 md:w-1/2 text-center mx-auto text-white rounded-xl hover:shadow-lg shadow-gray-500 md:px-12 px-5 py-3">
+      {/* Header text */}
+      <h1 className="font-mono md:text-3xl text-xl p-3 border-b border-white w-full h-fit my-">
         Password Generator
       </h1>
-      <div className="flex gap-2 my-3">
+      {/* password section*/}
+      <div className="flex gap-2 my-5">
         <input
           type="text"
           value={password}
           readOnly
           className="flex basis-[80%] border-2 rounded-lg outline-none focus:border-purple-600 px-2"
         />
+        {/* copy button */}
         <button
           onClick={copyToClipboard}
           className="basis-[20%] bg-white text-black px-3 py-1.5 rounded-lg cursor-pointer"
@@ -58,7 +56,8 @@ function PasswordGen() {
           Copy
         </button>
       </div>
-      <div className="flex justify-between">
+      {/* Password length section */}
+      <div className="flex justify-between my-5 md:text-lg font-mono">
         <label htmlFor="passLength">Password length</label>
         <input
           type="number"
@@ -66,10 +65,12 @@ function PasswordGen() {
           min={4}
           value={passwordLength}
           onChange={(e) => setPasswordLength(e.target.value)}
-          className="w-16 border-2 rounded-lg outline-none focus:border-purple-600 px-1"
+          className="border-2 rounded-lg outline-none focus:border-purple-600 px-1 w-fit"
         />
       </div>
-      <div className="flex justify-between mt-3">
+      {/* Options section */}
+      {/* uppercase */}
+      <div className="flex justify-between mt-3 md:text-lg font-mono">
         <label htmlFor="passLength">Include uppercase letters</label>
         <input
           type="checkbox"
@@ -78,7 +79,8 @@ function PasswordGen() {
           className="w-16 border-2 outline-none focus:border-purple-600 px-1 cursor-pointer "
         />
       </div>
-      <div className="flex justify-between mt-3">
+      {/* Lowercase */}
+      <div className="flex justify-between mt-3 md:text-lg font-mono">
         <label htmlFor="passLength">Include lowercase letters</label>
         <input
           type="checkbox"
@@ -87,7 +89,8 @@ function PasswordGen() {
           className="w-16 border-2 outlinefocus:border-purple-600 px-1 cursor-pointer "
         />
       </div>
-      <div className="flex justify-between mt-3">
+      {/* Number */}
+      <div className="flex justify-between mt-3 md:text-lg font-mono">
         <label htmlFor="passLength">Include Number</label>
         <input
           type="checkbox"
@@ -96,8 +99,9 @@ function PasswordGen() {
           className="w-16 border-2 outline-none focus:border-purple-600 px-1 cursor-pointer "
         />
       </div>
-      <div className="flex justify-between mt-3">
-        <label htmlFor="passLength">Include Super Charcter</label>
+      {/* Symsbols */}
+      <div className="flex justify-between mt-3 md:text-lg font-mono">
+        <label htmlFor="passLength">Include Symbols</label>
         <input
           type="checkbox"
           checked={symbols}
@@ -105,9 +109,10 @@ function PasswordGen() {
           className="w-16 border-2 outline-none focus:border-purple-600 px-1 cursor-pointer "
         />
       </div>
+      {/* Generate button */}
       <button
         onClick={generatePassword}
-        className="bg-white w-1/2 my-4 py-2 px-3 text-black text-xl font-medium rounded-xl cursor-pointer"
+        className="bg-white w-1/2 my-4 py-2 px-3 text-black text-xl font-mono rounded-xl cursor-pointer"
       >
         Generate
       </button>
